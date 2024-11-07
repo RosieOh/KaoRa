@@ -12,7 +12,7 @@ COPYRIGHT 2023 KAORA INC. ALL RIGHTS RESERVED.
 #### ⌛ Developed Period
 ##### 2024.11 ~
 
-## 🧑‍🦲 팀원(가나다순)
+## 🧑‍🦲 팀원(가나다순) - 나혼자 개발함...
 
 <table>
   <tbody>
