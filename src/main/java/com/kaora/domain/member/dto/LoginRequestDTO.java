@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Schema(title = "AUTH_REQ_01 : 로그인 요청 DTO")
+@Schema(title = "TBL_LOGIN_REQUEST : 로그인 요청 DTO")
 public class LoginRequestDTO {
 
     @NotNull(message= "이메일 입력은 필수 입니다.")
