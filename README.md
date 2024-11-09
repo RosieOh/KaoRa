@@ -1,7 +1,7 @@
 # ☕ KaoRa
 ## 모두의 카페를 리뷰합니다. 카페오브라이프, 카오라
 ```
-COPYRIGHT 2023 KAORA INC. ALL RIGHTS RESERVED.
+COPYRIGHT 2024 KAORA INC. ALL RIGHTS RESERVED.
 위 웹사이트는 "카페리안"의 저작물이므로 상업적 이용을 금합니다.
 ```
 
