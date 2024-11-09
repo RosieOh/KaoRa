@@ -4,6 +4,10 @@ import com.kaora.global.constant.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Collections;
+import java.util.List;
 
 @Entity
 @Table(name = "TBL_MEMBER")
@@ -27,4 +31,8 @@ public class Member {
     @Enumerated(EnumType.STRING)
     @Column(name = "ROLE", nullable = false)
     private Role role;
+
+    public List<GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(role);  // ROLE_USER, ROLE_ADMIN 등
+    }
 }
