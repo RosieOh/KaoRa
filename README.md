@@ -18,6 +18,7 @@ COPYRIGHT 2024 KAORA INC. ALL RIGHTS RESERVED.
   <tbody>
     <tr>
       <td align="center"><a href="https://github.com/sendjin5"><img src="https://github.com/ECO-TVY/.github/assets/104690434/69313dae-3288-47d1-aec3-f5314eb32fa3" width="100px;" alt=""/><br /><sub><b>오태훈</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/sendjin5"><img src="https://github.com/ECO-TVY/.github/assets/104690434/69313dae-3288-47d1-aec3-f5314eb32fa3" width="100px;" alt=""/><br /><sub><b>최신희</b></sub></a><br /></td>
     </tr>
   </tbody>
 </table>
