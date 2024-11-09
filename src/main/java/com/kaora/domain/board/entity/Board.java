@@ -25,18 +25,13 @@ public class Board extends BaseEntity {
     //공지사항의 타입 - NOTCE는 전체 공지사항
     private String boardType;
 
-    //기수 - 0일 경우에는 전체 공지사항
     @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
     private int flag;
 
-    //강의에 따른 공지사항
-    @Column(nullable = false, columnDefinition = "BIGINT DEFAULT 0")
-    private Long cno;      // 강의 분류
-
-//    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<File> files = new ArrayList<>();
-
     private String writer;
+
+    @Column
+    private Long fildId;
 
     //게시글 고정 여부
     @Column(columnDefinition = "BOOLEAN DEFAULT FALSE")
