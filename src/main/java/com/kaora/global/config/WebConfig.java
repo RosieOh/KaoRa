@@ -33,11 +33,6 @@ public class WebConfig implements WebMvcConfigurer {
         return md;
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(new StringHttpMessageConverter(Charset.forName("UTF-8")));
