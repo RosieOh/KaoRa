@@ -17,10 +17,8 @@ COPYRIGHT 2024 KAORA INC. ALL RIGHTS RESERVED.
 <table>
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/sendjin5"><img src="https://github.com/ECO-TVY/.github/assets/104690434/69313dae-3288-47d1-aec3-f5314eb32fa3" width="100px;" alt=""/><br /><sub><b>오태훈</b></sub></a><br /></td>
-    </tr>
-    <tr>
-      <td align="center"><a href="https://github.com/sendjin5"><img src="https://github.com/ECO-TVY/.github/assets/104690434/69313dae-3288-47d1-aec3-f5314eb32fa3" width="100px;" alt=""/><br /><sub><b>최승희</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/sendjin5"><img src="https://github.com/ECO-TVY/.github/assets/104690434/69313dae-3288-47d1-aec3-f5314eb32fa3" width="100px;" alt=""/><br /><sub><b>오태훈</b></sub></a><br /><sub><b>개발</b></sub></td>
+      <td align="center"><a href="https://github.com/sendjin5"><img src="https://github.com/ECO-TVY/.github/assets/104690434/69313dae-3288-47d1-aec3-f5314eb32fa3" width="100px;" alt=""/><br /><sub><b>최승희</b></sub></a><br /><sub><b>기획 및 마케팅</b></sub></td>
     </tr>
   </tbody>
 </table>
