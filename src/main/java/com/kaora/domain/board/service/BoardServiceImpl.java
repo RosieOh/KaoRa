@@ -7,12 +7,15 @@ import com.kaora.global.constant.BoardType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Service
@@ -20,8 +23,8 @@ import java.util.Optional;
 @Transactional
 public class BoardServiceImpl implements BoardService {
 
-    private final ModelMapper mm;
-    private final BoardRepository br;
+    private final ModelMapper modelMapper;
+    private final BoardRepository boardRepository;
 
     // 게시판 추가 메소드
     public void createAndSaveBoards() {
@@ -33,50 +36,78 @@ public class BoardServiceImpl implements BoardService {
         noticeBoard.setBoardType(BoardType.NOTICE.toString());
         board.add(noticeBoard);
         // 생성된 게시판들을 저장
-        br.saveAll(board);
+        boardRepository.saveAll(board);
     }
-
 
     // 조회
     @Override
     public BoardDTO findById(Long id) {
-        Optional<Board> result = br.findById(id);
-        BoardDTO bd = mm.map(result, BoardDTO.class);
-        return null;
+        Optional<Board> result = boardRepository.findById(id);
+        BoardDTO boardDTO = modelMapper.map(result.get(), BoardDTO.class);
+        return boardDTO;
     }
 
     @Override
-    public List<BoardDTO> findAll(BoardDTO bd) {
-        return null;
+    public List<BoardDTO> findAll(BoardDTO boardDTO) {
+        List<Board> boardList = new ArrayList<>();
+        List<BoardDTO> boardDTOList = boardList.stream()
+                .map(board -> modelMapper.map(board, BoardDTO.class))
+                .collect(Collectors.toList());
+        return boardDTOList;
     }
 
     @Override
     public List<Board> list() {
-        return null;
+        List<Board> boardList = boardRepository.findAll();
+        return boardList;
     }
 
     @Override
-    public void register(BoardDTO bd) {
-
+    public void register(BoardDTO boardDTO) {
+        Board board = modelMapper.map(boardDTO, Board.class);
+        board.setBoardType(board.getBoardType() != null ? board.getBoardType() : BoardType.NOTICE.toString());
+        board.setFlag(0);
+        board.setPinned(boardDTO.isPinned());
+        board.setDeleteType(false);
+        boardRepository.save(board);
     }
 
     @Override
-    public void modify(BoardDTO bd) {
-
+    public void modify(BoardDTO boardDTO) {
+        Optional<Board> result = boardRepository.findById(boardDTO.getId());
+        Board board = result.get();
+        board.change(boardDTO.getTitle(), boardDTO.getContent(), boardDTO.isPinned(), boardDTO.isPrivated());
+        boardRepository.save(board);
     }
 
+    // 게시글 삭제 -> 논리적 삭제
     @Override
     public void remove(Long id) {
-
+        Optional<Board> result = boardRepository.findById(id);
+        Board board = result.get();
+        board.setDeleteType(true);
+        boardRepository.save(board);
     }
 
     @Override
     public BoardDTO getBoard(Long id) {
-        return null;
+        Optional<Board> result = boardRepository.findById(id);
+        Board board = result.get();
+        BoardDTO boardDTO = modelMapper.map(board, BoardDTO.class);
+        return boardDTO;
     }
 
     @Override
     public List<BoardDTO> findByBoardType(String boardType) {
-        return null;
+        List<Board> boardList = boardRepository.findByBoardType(boardType);
+        List<BoardDTO> boardDTOList = boardList.stream()
+                .map(board -> modelMapper.map(board, BoardDTO.class))
+                .collect(Collectors.toList());
+        return boardDTOList;
+    }
+
+    public Page<BoardDTO> findByBoardTypeWithPaging(String boardType, Pageable pageable) {
+        Page<Board> boards = boardRepository.findByBoardType(boardType, pageable);
+        return boards.map(board -> modelMapper.map(board, BoardDTO.class));
     }
 }
