@@ -1,9 +1,9 @@
 package com.kaora.domain.board.dto;
 
-import lombok.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -18,33 +18,33 @@ public class BoardDTO {
     private Long id;
 
     @NotEmpty
-    @Size(max = 500)
+    @Size(max = 500, message = "Title cannot exceed 500 characters")
     private String title;
 
     @NotEmpty
-    @Size(max = 2000)
+    @Size(max = 2000, message = "Content cannot exceed 2000 characters")
     private String content;
 
     @NotEmpty
-    @Size(max = 50)
+    @Size(max = 50, message = "Board type cannot exceed 50 characters")
     private String boardType;
 
-    @NotNull
-    private Long fileId;
+    private int flag;
 
     @NotEmpty
-    @Size(max = 50)
+    @Size(max = 50, message = "Writer cannot exceed 50 characters")
     private String writer;
 
-    private LocalDateTime regDate;
-    private LocalDateTime modDate;
-    private List<String> fileNames;
+    private Long fileId; // Changed from @NotNull to allow null, matching Board entity
 
-    public Long getId() {
-        return id;
-    }
+    private boolean pinned;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private boolean privated;
+
+    private boolean deleteType;
+
+    private LocalDateTime regDate; // From BaseEntity
+    private LocalDateTime modDate; // From BaseEntity
+
+    private List<String> fileNames; // For multiple file names
 }
